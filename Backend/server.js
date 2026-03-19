@@ -7,7 +7,10 @@ import {clerkMiddleware} from "@clerk/express"
 configDotenv()
 
 const app = express()
-app.use(cors())
+app.use(cors({
+    origin: ["http://localhost:5173", "https://hackathon-platform-2cxc.vercel.app"],
+    credentials: true
+}))
 app.use(express.json())
 app.use(clerkMiddleware())
 const PORT = process.env.PORT || 3000

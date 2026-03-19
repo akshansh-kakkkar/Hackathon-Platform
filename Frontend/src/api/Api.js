@@ -1,7 +1,7 @@
 import axios from "axios"
 
 const API = axios.create({
-    baseURL: "https://hackathon-platform-git-main-akshansh-kakkkars-projects.vercel.app/"
+    baseURL: "https://hackathon-platform-git-main-akshansh-kakkkars-projects.vercel.app/api"
 })
 
 export const setAuthToken = (token) => {
