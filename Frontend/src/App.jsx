@@ -1,6 +1,6 @@
 import { useEffect, useRef } from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import { useUser, useAuth, AuthenticateWithRedirectCallback } from "@clerk/clerk-react";
+import { useUser, useAuth, AuthenticateWithRedirectCallback } from "@clerk/react";
 import { loginUser, setAuthToken } from "./api/Api";
 import HomeScreen from "./component/HomeScreen";
 

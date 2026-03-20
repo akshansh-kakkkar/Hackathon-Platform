@@ -1,10 +1,11 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { SignedIn, SignedOut, UserButton } from "@clerk/clerk-react";
+import { UserButton, useAuth } from "@clerk/react";
 import Login from "./Login";
 
 const Navbar = () => {
   const navigate = useNavigate();
+  const { isSignedIn } = useAuth();
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [modalView, setModalView] = useState("login");
 
@@ -27,7 +28,7 @@ const Navbar = () => {
             />
           </div>
           <div className="gap-2 sm:gap-5 flex items-center shrink-0">
-            <SignedIn>
+            {isSignedIn ? (
               <UserButton 
                 afterSignOutUrl="/" 
                 appearance={{
@@ -36,29 +37,30 @@ const Navbar = () => {
                   }
                 }}
               />
-            </SignedIn>
-            <SignedOut>
-              <button
-                onClick={() => openModal("login")}
-                className="text-white bg-transparent uppercase border sm:border-2 py-1 px-2 sm:py-2 sm:px-6 rounded-lg sm:rounded-xl text-[10px] sm:text-sm font-medium hover:bg-white hover:text-[#1E3A8A] transition-all"
-              >
-                Login
-              </button>
-              <button
-                onClick={() => openModal("signup")}
-                className="bg-white rounded-lg sm:rounded-xl py-1 px-2 sm:py-2 sm:px-6 uppercase text-[10px] sm:text-sm font-bold text-[#0F172A] hover:bg-gray-200 transition-all shadow-md"
-              >
-                Sign up
-              </button>
-            </SignedOut>
+            ) : (
+              <>
+                <button
+                  onClick={() => openModal("login")}
+                  className="text-white bg-transparent uppercase border sm:border-2 py-1 px-2 sm:py-2 sm:px-6 rounded-lg sm:rounded-xl text-[10px] sm:text-sm font-medium hover:bg-white hover:text-[#1E3A8A] transition-all"
+                >
+                  Login
+                </button>
+                <button
+                  onClick={() => openModal("signup")}
+                  className="bg-white rounded-lg sm:rounded-xl py-1 px-2 sm:py-2 sm:px-6 uppercase text-[10px] sm:text-sm font-bold text-[#0F172A] hover:bg-gray-200 transition-all shadow-md"
+                >
+                  Sign up
+                </button>
+              </>
+            )}
           </div>
         </div>
       </nav>
 
-      <Login 
-        isOpen={isModalOpen} 
-        onClose={() => setIsModalOpen(false)} 
-        initialView={modalView} 
+      <Login
+        isOpen={isModalOpen}
+        onClose={() => setIsModalOpen(false)}
+        initialView={modalView}
       />
     </>
   );

@@ -1,11 +1,14 @@
 import React from 'react'
 import Navbar from './Navbar'
-
+import SerchPage from './SerchPage'
+import Categories from './Categories'
+import HowItWorks from './HowItWorks'
 const HomeScreen = () => {
   return (
     <>
       <Navbar />
       <main>
+        {/* ... existing code ... */}
         <div className='backgroundimg min-h-[88vh] flex items-center px-6 md:px-12 lg:px-24 relative overflow-hidden'>
           
           <img src="/vector.png" alt="" className='absolute top-10 left-10 w-16 md:w-24 opacity-20 -rotate-12 pointer-events-none' />
@@ -45,7 +48,11 @@ const HomeScreen = () => {
             </div>
 
           </div>
+          
         </div>
+        <SerchPage />
+        <Categories />
+        <HowItWorks />
       </main>
     </>
   )
