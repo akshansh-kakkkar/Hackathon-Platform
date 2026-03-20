@@ -58,7 +58,7 @@ const SerchPage = () => {
   const [activeFilter, setActiveFilter] = useState("New");
 
   return (
-    <div className="w-full min-h-screen bg-white py-16 px-6 lg:px-12">
+    <div id="search-page" className="w-full min-h-screen bg-white py-16 px-6 lg:px-12">
       {/* Title */}
       <h2 className="text-4xl md:text-5xl font-extrabold text-[#3B82F6] text-center poppins uppercase mb-12 tracking-tight">
         View Events

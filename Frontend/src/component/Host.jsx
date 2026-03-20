@@ -1,34 +1,13 @@
 import React from 'react'
-import Navbar from './Navbar'
-import SerchPage from './SerchPage'
-import Categories from './Categories'
-import HowItWorks from './HowItWorks'
-import HostEvents from './HostEvents'
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { UserButton, useAuth } from "@clerk/react";
 import Login from "./Login";
 
-const HomeScreen = () => {
-  const [isModalOpen, setIsModalOpen] = useState(false);
-  const [modalView, setModalView] = useState("login");
-
-  const openModal = (view) => {
-    setModalView(view);
-    setIsModalOpen(true);
-  };
-
-  const scrollToSearch = () => {
-    document.getElementById("search-page")?.scrollIntoView({ behavior: "smooth" });
-  };
-
+const Host = () => {
   return (
-    <>
-      <Navbar openModal={openModal} />
-      <main>
-
-        <div className='backgroundimg min-h-[88vh] flex items-center px-6 md:px-12 lg:px-24 relative overflow-hidden'>
-
+           <div className='backgroundimg min-h-[100vh] flex items-center px-6 md:px-12 lg:px-24 relative overflow-hidden'>
+          
           <img src="/vector.png" alt="" className='absolute top-10 left-10 w-16 md:w-24 opacity-20 -rotate-12 pointer-events-none' />
           <img src="/vector.png" alt="" className='absolute top-[-20px] left-[40%] w-20 md:w-28 opacity-20 rotate-45 pointer-events-none' />
           <img src="/vector.png" alt="" className='absolute top-[40%] left-[-30px] w-24 md:w-32 opacity-20 rotate-[15deg] pointer-events-none' />
@@ -40,47 +19,32 @@ const HomeScreen = () => {
 
             <div className='flex-1 space-y-6 text-center lg:text-left flex flex-col items-center lg:items-start'>
               <h1 className='text-4xl md:text-6xl lg:text-7xl font-extrabold leading-tight tracking-tight poppins uppercase'>
-                <span className='text-[#3B82F6]'>Discover</span> <span className='text-[#0F172A]'>and</span><br />
-                <span className='text-[#0F172A]'>Book Events</span><br />
+                <span className='text-[#3B82F6]'>Create</span> <span className='text-[#0F172A]'>and</span><br />
+                <span className='text-[#0F172A]'>manage events</span><br />
                 <span className='text-[#3B82F6]'>Effortlessly</span>
               </h1>
-
+              
               <div className='flex flex-col sm:flex-row gap-4 sm:gap-6 pt-4 w-full sm:w-auto'>
-                <button onClick={scrollToSearch} className='bg-[#3B82F6] text-white px-8 py-4 rounded-lg font-bold shadow-lg hover:bg-[#2563EB] transition-all transform hover:scale-105 active:scale-95'>
-                  Start Searching
-                </button>
-                <button onClick={() => openModal("signup")} className='bg-transparent border-2 border-[#3B82F6] text-[#3B82F6] px-8 py-4 rounded-lg font-bold hover:bg-[#3B82F6] hover:text-white transition-all transform hover:scale-105 active:scale-95'>
-                  Start Hosting
+                <button className='bg-[#3B82F6] text-white px-8 py-4 rounded-lg font-bold shadow-lg hover:bg-[#2563EB] transition-all transform hover:scale-105 active:scale-95'>
+                  Start hosting
                 </button>
               </div>
             </div>
             <div className='flex-1 flex justify-center w-full max-w-[500px]'>
               <div className='relative w-full aspect-square'>
                 <div className='absolute -inset-4 bg-white/30 blur-2xl rounded-full'></div>
-                <img
-                  src="/assets/hackathon_illustration.png"
-                  alt="Hackathon Illustration"
+                <img 
+                  src="/assets/hackathon_illustration.png" 
+                  alt="Hackathon Illustration" 
                   className='relative w-full h-full object-contain rounded-3xl shadow-2xl border-4 md:border-8 border-white'
                 />
               </div>
             </div>
 
           </div>
-
+          
         </div>
-        <SerchPage />
-        <Categories />
-        <HowItWorks />
-        <HostEvents openModal={openModal} />
-      </main>
-
-      <Login
-        isOpen={isModalOpen}
-        onClose={() => setIsModalOpen(false)}
-        initialView={modalView}
-      />
-    </>
   )
 }
 
-export default HomeScreen
+export default Host
